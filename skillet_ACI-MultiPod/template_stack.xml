@@ -1,0 +1,20 @@
+<entry name="{{ STACK }}">
+      <description>Template Stack for NSX-V automated deployment</description>
+      <settings>
+        <default-vsys>vsys1</default-vsys>
+      </settings>
+      <templates>
+        <member>Template-NSX</member>
+      </templates>
+      <config>
+        <devices>
+          <entry name="localhost.localdomain">
+            <vsys>
+              <entry name="vsys1">
+                <zone/>
+              </entry>
+            </vsys>
+          </entry>
+        </devices>
+      </config>
+</entry>

@@ -1,0 +1,4 @@
+<entry name="{{ DEVICEGROUP }}">
+        <authorization-code>{{ AUTHCODE }}</authorization-code>
+        <description>Device Group NSX-V for automated deployment</description>
+</entry>

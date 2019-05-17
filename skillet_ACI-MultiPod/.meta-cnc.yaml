@@ -1,0 +1,109 @@
+# Metadata for skillet_nsx_v81
+
+# snippets is the base configuration directory for all child configurations
+# this is a complete Panorama and reference device-group and template stack configuration for NSX-V
+
+# snippet folder name
+name: skillet_nsx_v81
+# label used for menu selection
+label: v8.1 Iron-Skillet NSX-V for Panorama
+description: Iron-Skillet baseline NSX-V configuration for Panorama POCs
+# type of device configuration
+type: panorama
+extends:
+
+# grouping of like snippets for dynamic menu creation in pan-cnc
+labels:
+  service_type: iron_skillet
+  collection:
+    - IronSkillet
+
+# variables used in the configuration templates
+# type_hint defines the form field type in pan-cnc
+variables:
+  - name: STACK
+    description: Template Stack name for NSX
+    default: Stack-NSX
+    type_hint: text
+  - name: DEVICEGROUP
+    description: Device Group name for NSX
+    default: Device-Group-NSX
+    type_hint: text
+  - name: AUTHCODE
+    description: AuthCode VM series for NSX
+    default: authcode
+    type_hint: text
+  - name: URLOVA
+    description: URL where ovf/ova package is hosted
+    default: http://vm300.ovf
+    type_hint: text
+  - name: NSXLOGIN
+    description: NSX Manager login
+    default: admin
+    type_hint: text
+  - name: NSXMANAGER
+    description: NSX Manager URL
+    default: https://ip-address-nsx_manager
+    type_hint: text
+  - name: NSXPASSWORD
+    description: NSX Manager password
+    default: admin
+    type_hint: text
+  - name: DNS
+    description: DNS Server IP address
+    default: 8.8.8.8
+    type_hint: ip_address
+  - name: NTP
+    description: NTP Server IP address
+    default: 1.pool.ntp.org
+    type_hint: text
+  - name: TENANT
+    description: Tenant name for Zone creation
+    default: Tenant-1
+    type_hint: text
+  - name: COLORTAG
+    description: Color of the TAG for your Tenant
+    default: orange
+    type_hint: dropdown
+    dd_list:
+      - key: orange
+        value: color6
+      - key: blue
+        value: color3
+      - key: red
+        value: color1
+      - key: green
+        value: color2
+
+# snippets used for api configuration including xpath and element as file name
+# files will load in the order listed
+snippets:
+  - name: panorama_system
+    xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig/system
+    file: panorama_system.xml
+  - name: template
+    xpath: /config/devices/entry[@name='localhost.localdomain']/template
+    file: template.xml
+  - name: stack
+    xpath: /config/devices/entry[@name='localhost.localdomain']/template-stack
+    file: template_stack.xml
+  - name: devicegroup
+    xpath: /config/devices/entry[@name='localhost.localdomain']/device-group
+    file: device_group.xml
+  - name: tag
+    xpath: /config/devices/entry[@name='localhost.localdomain']/device-group/entry[@name='{{ DEVICEGROUP }}']/tag
+    file: tag.xml
+  - name: log_settings
+    xpath: /config/shared/log-settings/profiles
+    file: log_settings.xml
+  - name: pre_rulebase_security
+    xpath: /config/devices/entry[@name='localhost.localdomain']/device-group/entry[@name='{{ DEVICEGROUP }}']/pre-rulebase
+    file: pre_rulebase_security.xml
+  - name: servicedefinition
+    xpath: /config/devices/entry[@name='localhost.localdomain']/plugins/vmware_nsx/service-definition
+    file: service_definition.xml
+  - name: servicemanager
+    xpath: /config/devices/entry[@name='localhost.localdomain']/plugins/vmware_nsx/service-manager
+    file: service_manager.xml
+
+    

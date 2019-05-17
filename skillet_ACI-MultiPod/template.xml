@@ -1,0 +1,40 @@
+<entry name="Template-NSX">
+      <description>Template for NSX-V automated deployment</description>
+      <settings>
+        <default-vsys>vsys1</default-vsys>
+      </settings>
+      <config>
+        <devices>
+          <entry name="localhost.localdomain">
+            <vsys>
+              <entry name="vsys1">
+                <zone>
+                  <entry name="{{ TENANT }}">
+                    <network>
+                      <virtual-wire/>
+                    </network>
+                    <enable-user-identification>yes</enable-user-identification>
+                  </entry>
+                </zone>
+              </entry>
+            </vsys>
+            <deviceconfig>
+              <system>
+                <dns-setting>
+                  <servers>
+                    <primary>{{ DNS }}</primary>
+                  </servers>
+                </dns-setting>
+                <ntp-servers>
+                  <primary-ntp-server>
+                    <ntp-server-address>{{ NTP }}</ntp-server-address>
+                  </primary-ntp-server>
+                </ntp-servers>
+                <login-banner>VM Series Palo Alto Networks for NSX</login-banner>
+                <timezone>Europe/Paris</timezone>
+              </system>
+            </deviceconfig>
+          </entry>
+        </devices>
+      </config>
+</entry>

@@ -11,7 +11,7 @@
 
 - A PBR policy MUST be configured in parallel in the Fabric for your pod with filters on a Service Graph and that Service Graph must be applied to a contract to start redirecting some traffic to our cluster of VM Series. 
 
-- You must have a Multi Pod (2 pod) with "Enable Pod Aware redirection" option checked and a functionnal IP SLA option (icmp) for the heath check in your L4-L7 Policy-Based Redirect configuration for the setup to work as expected
+- You must have a Multi Pod (2 pods) with "Enable Pod Aware redirection" option checked and a functionnal IP SLA option (icmp) for the heath check in your L4-L7 Policy-Based Redirect configuration for the setup to work as expected
 
 
 ### This skillet will automate these tasks for you on Panorama :
@@ -42,7 +42,7 @@
 
 ## Caution  
 - That skillet will not configure ACI Fabric to redirect traffic. That step must be done in parallel.
-- Promiscious mode is not mandatory vNIC4 port group to have a functionnal cluster A/P
+- Promiscious mode is not mandatory vNIC4 port group to have a functionnal cluster A/A
 - That skillet shoud work with physical devices instead of VM series but it has not been tested.
 
 ## Support Policy

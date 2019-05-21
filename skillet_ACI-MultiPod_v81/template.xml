@@ -32,7 +32,7 @@
               </setting>
               <system>
                 <hostname>Device-A</hostname>
-                <login-banner>VM series in A/P for ACI Single Pod automated deployment</login-banner>
+                <login-banner>VM series in A/A for ACI Multi Pod automated deployment</login-banner>
                 <timezone>Europe/Paris</timezone>
                 <dns-setting>
                   <servers>
@@ -174,7 +174,7 @@
               </setting>
               <system>
                 <hostname>Device-B</hostname>
-                <login-banner>VM series in A/P for ACI Single Pod automated deployment</login-banner>
+                <login-banner>VM series in A/A for ACI Multi Pod automated deployment</login-banner>
                 <timezone>Europe/Paris</timezone>
                 <dns-setting>
                   <servers>

@@ -1,9 +1,0 @@
-<entry name="PaloAltoNetworks">
-    <service-definitions>
-        <member>PaloAltoNetworks</member>
-    </service-definitions>
-      <description>Cybersecurity Solution</description>
-      <nsx-manager-url>{{ NSXMANAGER }}</nsx-manager-url>
-      <nsx-manager-login>{{ NSXLOGIN }}</nsx-manager-login>
-      <nsx-manager-password>{{ NSXPASSWORD }}</nsx-manager-password>
-</entry>

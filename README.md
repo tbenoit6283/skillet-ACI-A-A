@@ -27,17 +27,17 @@
 - DEVICEGROUP (Device Group name for your VM Series for ACI)
 - HA2_DEVICE_A (Device A IP address for HA2)
 - HA2_DEVICE_B (Device B IP address for HA2)
-- HA3_DEVICE_A (Device A IP address for HA3)
-- HA3_DEVICE_B (Device B IP address for HA3)
 - MGT_DEVICE_A (MGT IP address of Device A)
 - MGT_DEVICE_B (MGT IP address of Device B)
 - DNS (DNS Server IP address)
 - NTP (NTP Server IP address)
 - ZONE (Zone creation for PBR interconnection)
-- TARGET_IP_PBR (Target IP of the fabric for PBR without Netmask)
-- LOCAL_IP_PBR (Local IP of your VM interface connected to the the fabric for PBR with Netmask)
+- HYPERVISOR_MAC (Hypervisor Assigned MAC address option yes/no)
+- TARGET_IP_PBR_POD_A (Target IP of the fabric for PBR in POD A without Netmask)
+- TARGET_IP_PBR_POD_B (Target IP of the fabric for PBR in POD B without Netmask)
+- LOCAL_IP_PBR_POD_A (Local IP of your VM interface connected to the the fabric for PBR in POD A with Netmask)
+- LOCAL_IP_PBR_POD_B (Local IP of your VM interface connected to the the fabric for PBR in POD A with Netmask)
 - TAGCOLOR (Color of the TAG for your Zone)
-
 
 
 ## Caution  

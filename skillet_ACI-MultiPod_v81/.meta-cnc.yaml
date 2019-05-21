@@ -69,14 +69,30 @@ variables:
     description: Zone creation for PBR interconnection
     default: ACI_PBR
     type_hint: text
-  - name: TARGET_IP_PBR
-    description: Target IP of the fabric for PBR (without netmask)
+  - name: TARGET_IP_PBR_POD_A
+    description: Target IP of the fabric for PBR on POD A (without netmask)
     default: 10.0.0.254
     type_hint: ip_address
-  - name: LOCAL_IP_PBR
-    description: Local IP of your VM interface connected to the the fabric for PBR (with netmask)
+  - name: TARGET_IP_PBR_POD_B
+    description: Target IP of the fabric for PBR on POD B (without netmask)
+    default: 20.0.0.254
+  - name: LOCAL_IP_PBR_POD_A
+    description: Local IP of your VM interface connected to the the fabric for PBR on POD A (with netmask)
     default: 10.0.0.1/24
     type_hint: text
+  - name: LOCAL_IP_PBR_POD_B
+    description: Local IP of your VM interface connected to the the fabric for PBR on POD B (with netmask)
+    default: 20.0.0.1/24
+    type_hint: text
+  - name: HYPERVISOR_MAC
+    description: Hypervisor Assigned MAC option for the VM
+    default: enable
+    type_hint: dropdown
+    dd_list:
+      - key: enable
+        value: yes
+      - key: disable
+        value: no
   - name: COLORTAG
     description: Color of the TAG for rules of your Zone
     default: orange

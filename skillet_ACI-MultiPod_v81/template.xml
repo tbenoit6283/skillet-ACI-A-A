@@ -8,10 +8,10 @@
             <vsys>
               <entry name="vsys1">
                 <zone>
-                  <entry name="{{ ZONE }}">
+                  <entry name="ACI_PBR">
                     <network>
                       <layer3>
-                        <member>ethernet1/2</member>
+                        <member>ethernet1/3</member>
                       </layer3>
                     </network>
                     <enable-user-identification>yes</enable-user-identification>
@@ -20,7 +20,7 @@
                 <import>
                   <network>
                     <interface>
-                      <member>ethernet1/2</member>
+                      <member>ethernet1/3</member>
                     </interface>
                   </network>
                 </import>
@@ -28,7 +28,7 @@
             </vsys>
             <deviceconfig>
               <setting>
-                <auto-mac-detect>no</auto-mac-detect>
+                <auto-mac-detect>{{ HYPERVISOR_MAC }}</auto-mac-detect>
               </setting>
               <system>
                 <hostname>Device-A</hostname>
@@ -53,11 +53,13 @@
                   <ha1-backup/>
                   <ha2>
                     <port>ethernet1/1</port>
-                    <ip-address>{{ HA2_DEVICE_A }}</ip-address>
+                    <ip-address>{ HA2_DEVICE_A }}</ip-address>
                     <netmask>255.255.255.240</netmask>
                   </ha2>
                   <ha2-backup/>
-                  <ha3/>
+                  <ha3>
+                    <port>ethernet1/2</port>
+                  </ha3>
                 </interface>
                 <group>
                   <group-id>10</group-id>
@@ -77,13 +79,31 @@
                         <virtual-router>
                           <entry name="VR-ACI-PBR">
                             <destination-ip>
-                              <member>{{ TARGET_IP_PBR }}</member>
+                              <member>{{ TARGET_IP_PBR_POD_A }}</member>
                             </destination-ip>
                           </entry>
                         </virtual-router>
                       </path-group>
                     </path-monitoring>
                   </monitoring>
+                  <mode>
+                    <active-active>
+                      <device-id>0</device-id>
+                      <network-configuration>
+                        <sync>
+                          <virtual-router>no</virtual-router>
+                        </sync>
+                      </network-configuration>
+                      <session-owner-selection>
+                        <first-packet>
+                          <session-setup>
+                            <first-packet/>
+                          </session-setup>
+                        </first-packet>
+                      </session-owner-selection>
+                      <tentative-hold-time>20</tentative-hold-time>
+                    </active-active>
+                  </mode>
                 </group>
                 <enabled>yes</enabled>
               </high-availability>
@@ -92,17 +112,15 @@
               <virtual-router>
                 <entry name="VR-ACI-PBR">
                   <interface>
-                    <member>ethernet1/2</member>
+                    <member>ethernet1/3</member>
                   </interface>
                   <routing-table>
                     <ip>
                       <static-route>
                         <entry name="default">
                           <nexthop>
-                            <ip-address>{{ TARGET_IP_PBR }}</ip-address>
+                            <ip-address>{{ TARGET_IP_PBR_POD_A }}</ip-address>
                           </nexthop>
-                          <interface>ethernet1/2</interface>
-                          <metric>10</metric>
                           <destination>0.0.0.0/0</destination>
                         </entry>
                       </static-route>
@@ -120,18 +138,18 @@
               <interface>
                 <ethernet>
                   <entry name="ethernet1/2">
-                    <layer3>
-                      <ip>
-                        <entry name="{{ LOCAL_IP_PBR }}"/>
-                      </ip>
-                      <interface-management-profile>Ping</interface-management-profile>
-                      <lldp>
-                        <enable>no</enable>
-                      </lldp>
-                    </layer3>
+                    <ha/>
                   </entry>
                   <entry name="ethernet1/1">
                     <ha/>
+                  </entry>
+                  <entry name="ethernet1/3">
+                    <layer3>
+                      <ip>
+                        <entry name="{{ LOCAL_IP_PBR_POD_A }}"/>
+                      </ip>
+                      <interface-management-profile>Ping</interface-management-profile>
+                    </layer3>
                   </entry>
                 </ethernet>
               </interface>
@@ -139,7 +157,7 @@
           </entry>
         </devices>
       </config>
-</entry>
+    </entry>
 <entry name="Template-Device-B">
       <settings>
         <default-vsys>vsys1</default-vsys>
@@ -150,10 +168,10 @@
             <vsys>
               <entry name="vsys1">
                 <zone>
-                  <entry name="{{ ZONE }}">
+                  <entry name="ACI_PBR">
                     <network>
                       <layer3>
-                        <member>ethernet1/2</member>
+                        <member>ethernet1/3</member>
                       </layer3>
                     </network>
                     <enable-user-identification>yes</enable-user-identification>
@@ -162,7 +180,7 @@
                 <import>
                   <network>
                     <interface>
-                      <member>ethernet1/2</member>
+                      <member>ethernet1/3</member>
                     </interface>
                   </network>
                 </import>
@@ -170,7 +188,7 @@
             </vsys>
             <deviceconfig>
               <setting>
-                <auto-mac-detect>no</auto-mac-detect>
+                <auto-mac-detect>{{ HYPERVISOR_MAC }}</auto-mac-detect>
               </setting>
               <system>
                 <hostname>Device-B</hostname>
@@ -195,11 +213,13 @@
                   <ha1-backup/>
                   <ha2>
                     <port>ethernet1/1</port>
-                    <ip-address>{{ HA2_DEVICE_B }}</ip-address>
+                    <ip-address>{ HA2_DEVICE_B }}</ip-address>
                     <netmask>255.255.255.240</netmask>
                   </ha2>
                   <ha2-backup/>
-                  <ha3/>
+                  <ha3>
+                    <port>ethernet1/2</port>
+                  </ha3>
                 </interface>
                 <group>
                   <group-id>10</group-id>
@@ -219,13 +239,31 @@
                         <virtual-router>
                           <entry name="VR-ACI-PBR">
                             <destination-ip>
-                              <member>{{ TARGET_IP_PBR }}</member>
+                              <member>{{ TARGET_IP_PBR_POD_B }}</member>
                             </destination-ip>
                           </entry>
                         </virtual-router>
                       </path-group>
                     </path-monitoring>
                   </monitoring>
+                  <mode>
+                    <active-active>
+                      <device-id>1</device-id>
+                      <network-configuration>
+                        <sync>
+                          <virtual-router>no</virtual-router>
+                        </sync>
+                      </network-configuration>
+                      <session-owner-selection>
+                        <first-packet>
+                          <session-setup>
+                            <first-packet/>
+                          </session-setup>
+                        </first-packet>
+                      </session-owner-selection>
+                      <tentative-hold-time>20</tentative-hold-time>
+                    </active-active>
+                  </mode>
                 </group>
                 <enabled>yes</enabled>
               </high-availability>
@@ -234,17 +272,15 @@
               <virtual-router>
                 <entry name="VR-ACI-PBR">
                   <interface>
-                    <member>ethernet1/2</member>
+                    <member>ethernet1/3</member>
                   </interface>
                   <routing-table>
                     <ip>
                       <static-route>
                         <entry name="default">
                           <nexthop>
-                            <ip-address>{{ TARGET_IP_PBR }}</ip-address>
+                            <ip-address>{{ TARGET_IP_PBR_POD_B }}</ip-address>
                           </nexthop>
-                          <interface>ethernet1/2</interface>
-                          <metric>10</metric>
                           <destination>0.0.0.0/0</destination>
                         </entry>
                       </static-route>
@@ -262,15 +298,18 @@
               <interface>
                 <ethernet>
                   <entry name="ethernet1/2">
-                    <layer3>
-                      <ip>
-                        <entry name="{{ LOCAL_IP_PBR }}"/>
-                      </ip>
-                      <interface-management-profile>Ping</interface-management-profile>
-                    </layer3>
+                    <ha/>
                   </entry>
                   <entry name="ethernet1/1">
                     <ha/>
+                  </entry>
+                  <entry name="ethernet1/3">
+                    <layer3>
+                      <ip>
+                        <entry name="{{ LOCAL_IP_PBR_POD_B }}"/>
+                      </ip>
+                      <interface-management-profile>Ping</interface-management-profile>
+                    </layer3>
                   </entry>
                 </ethernet>
               </interface>
@@ -278,4 +317,4 @@
           </entry>
         </devices>
       </config>
-</entry>
+    </entry>

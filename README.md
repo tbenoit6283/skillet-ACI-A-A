@@ -38,6 +38,9 @@
 - TARGET_IP_PBR_POD_B (Target IP of the fabric for PBR in POD B without Netmask)
 - LOCAL_IP_PBR_POD_A (Local IP of your VM interface connected to the the fabric for PBR in POD A with Netmask)
 - LOCAL_IP_PBR_POD_B (Local IP of your VM interface connected to the the fabric for PBR in POD A with Netmask)
+- APIC_IP (IP address of APIC controller)
+- APIC_LOGIN (Login of APIC controller)
+- APIC_PASSWORD (Password of APIC controller)
 - TAGCOLOR (Color of the TAG for your Zone)
 
 

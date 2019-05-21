@@ -11,13 +11,13 @@
 
 - A PBR policy MUST be configured in parallel in the Fabric for your pod with filters on a Service Graph and that Service Graph must be applied to a contract to start redirecting some traffic to our cluster of VM Series. 
 
-- You must have a Multi Pods (2 pods) with "Enable Pod Aware redirection" option checked and a functionnal IP SLA option (icmp) for the heath check in your L4-L7 Policy-Based Redirect configuration for the setup to work as expected
+- You must have a Multi Pods (2 pods) with "Enable Pod Aware redirection" option checked and a functional IP SLA option (icmp) for the heath check in your L4-L7 Policy-Based Redirect configuration for the setup to work as expected
 
 
 ### This skillet will automate these tasks for you on Panorama :
 - create a Template Stack and a Template dedicated for each of your 2 VM Series all Network and Device policies configured with webpage variables.
-- create a Device Group dedicated for that specific cluster of VM series configured for a Multi Pods PBR insersion.
-- move and attach your 2 VM series to these respective Template Stack and Device Group adn trigger a commit to have a fully functionnal setup.
+- create a Device Group dedicated for that specific cluster of VM series configured for a Multi Pods PBR insertion.
+- move and attach your 2 VM series to these respective Template Stack and Device Group and trigger a commit to have a fully functional setup.
  
 
 
@@ -48,6 +48,7 @@
 - That skillet will not configure ACI Fabric to redirect traffic. That step must be done in parallel.
 - Promiscious mode is not mandatory vNIC4 port group to have a functionnal cluster A/A
 - That skillet shoud work with physical devices instead of VM series but it has not been tested.
+- Panorama must be able to reach APIC controller without any proxy to retrieve metadata. DAGs must be created manually after you apply the skillet.
 
 ## Support Policy
 

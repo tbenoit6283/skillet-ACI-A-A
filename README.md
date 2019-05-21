@@ -32,7 +32,6 @@
 - DNS (DNS Server IP address)
 - NTP (NTP Server IP address)
 - ZONE (Zone creation for PBR interconnection)
-- HYPERVISOR_MAC (Hypervisor Assigned MAC address option yes/no)
 - TARGET_IP_PBR_POD_A (Target IP of the fabric for PBR in POD A without Netmask)
 - TARGET_IP_PBR_POD_B (Target IP of the fabric for PBR in POD B without Netmask)
 - LOCAL_IP_PBR_POD_A (Local IP of your VM interface connected to the the fabric for PBR in POD A with Netmask)

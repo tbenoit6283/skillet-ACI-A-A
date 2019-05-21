@@ -41,6 +41,14 @@ variables:
     description: NTP Server IP address
     default: 1.pool.ntp.org
     type_hint: text
+  - name: SN_DEVICE_A
+    description: Serial Number of Device A
+    default: 015351000028033
+    type_hint: text
+  - name: SN_DEVICE_B
+    description: Serial Number of Device B
+    default: 015351000028032
+    type_hint: text
   - name: HA2_DEVICE_A
     description: Device A IP address for HA2
     default: 1.1.1.1

@@ -49,14 +49,6 @@ variables:
     description: Device B IP address for HA2
     default: 1.1.1.2
     type_hint: ip_address
-  - name: HA3_DEVICE_A
-    description: Device A IP address for HA2
-    default: 2.1.1.1
-    type_hint: ip_address
-  - name: HA3_DEVICE_B
-    description: Device B IP address for HA2
-    default: 2.1.1.2
-    type_hint: ip_address
   - name: MGT_DEVICE_A
     description: MGT IP address of Device A
     default: 10.197.140.157

@@ -31,6 +31,8 @@
 - MGT_DEVICE_B (MGT IP address of Device B)
 - DNS (DNS Server IP address)
 - NTP (NTP Server IP address)
+- SN_DEVICE_A (Serial Number of Device A)
+- SN_DEVICE_B (Serial Number of Device B)
 - ZONE (Zone creation for PBR interconnection)
 - TARGET_IP_PBR_POD_A (Target IP of the fabric for PBR in POD A without Netmask)
 - TARGET_IP_PBR_POD_B (Target IP of the fabric for PBR in POD B without Netmask)

@@ -1,0 +1,138 @@
+# Metadata for skillet_ACI_MultiPod_v81
+
+# snippets is the base configuration directory for all child configurations
+# this is a complete Panorama and reference device-group and template stack configuration for ACI Mutli-Pod
+
+# snippet folder name
+name: skillet_ACI-MultiPod
+# label used for menu selection
+label: v8.1 Iron-Skillet firewall clustering A/A configuration for Multi Pods ACI with Panorama templates
+description: Iron-Skillet baseline A/A clustering configuration for ACI Multi Pod POCs
+# type of device configuration
+type: panorama
+extends:
+
+# grouping of like snippets for dynamic menu creation in pan-cnc
+labels:
+  service_type: iron_skillet
+  collection:
+    - IronSkillet
+
+# variables used in the configuration templates
+# type_hint defines the form field type in pan-cnc
+variables:
+  - name: STACK_DEVICE_A
+    description: Template Stack name Device A
+    default: Stack-Device-A
+    type_hint: text
+  - name: STACK_DEVICE_B
+    description: Template Stack name Device B
+    default: Stack-Device-B
+    type_hint: text
+  - name: DEVICEGROUP
+    description: Device Group name for ACI
+    default: Device-Group-ACI
+    type_hint: text
+  - name: DNS
+    description: DNS Server IP address
+    default: 8.8.8.8
+    type_hint: ip_address
+  - name: NTP
+    description: NTP Server IP address
+    default: 1.pool.ntp.org
+    type_hint: text
+  - name: HA2_DEVICE_A
+    description: Device A IP address for HA2
+    default: 1.1.1.1
+    type_hint: ip_address
+  - name: HA2_DEVICE_B
+    description: Device B IP address for HA2
+    default: 1.1.1.2
+    type_hint: ip_address
+  - name: HA3_DEVICE_A
+    description: Device A IP address for HA2
+    default: 2.1.1.1
+    type_hint: ip_address
+  - name: HA3_DEVICE_B
+    description: Device B IP address for HA2
+    default: 2.1.1.2
+    type_hint: ip_address
+  - name: MGT_DEVICE_A
+    description: MGT IP address of Device A
+    default: 10.197.140.157
+    type_hint: ip_address
+  - name: MGT_DEVICE_B
+    description: MGT IP address of Device B
+    default: 10.197.140.158
+    type_hint: ip_address
+  - name: ZONE
+    description: Zone creation for PBR interconnection
+    default: ACI_PBR
+    type_hint: text
+  - name: TARGET_IP_PBR
+    description: Target IP of the fabric for PBR (without netmask)
+    default: 10.0.0.254
+    type_hint: ip_address
+  - name: LOCAL_IP_PBR
+    description: Local IP of your VM interface connected to the the fabric for PBR (with netmask)
+    default: 10.0.0.1/24
+    type_hint: text
+  - name: COLORTAG
+    description: Color of the TAG for rules of your Zone
+    default: orange
+    type_hint: dropdown
+    dd_list:
+      - key: orange
+        value: color6
+      - key: blue
+        value: color3
+      - key: red
+        value: color1
+      - key: green
+        value: color2
+
+# snippets used for api configuration including xpath and element as file name
+# files will load in the order listed
+snippets:
+  - name: panorama_system
+    xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig/system
+    file: panorama_system.xml
+  - name: panorama_mgt_config
+    xpath: /config/mgt-config
+    file: mgt_config.xml
+  - name: template
+    xpath: /config/devices/entry[@name='localhost.localdomain']/template
+    file: template.xml
+  - name: stack
+    xpath: /config/devices/entry[@name='localhost.localdomain']/template-stack
+    file: template_stack.xml
+  - name: devicegroup
+    xpath: /config/devices/entry[@name='localhost.localdomain']/device-group
+    file: device_group.xml
+  - name: tag
+    xpath: /config/devices/entry[@name='localhost.localdomain']/device-group/entry[@name='{{ DEVICEGROUP }}']/tag
+    file: tag.xml
+  - name: log_settings
+    xpath: /config/shared/log-settings/profiles
+    file: log_settings.xml
+  - name: profiles_virus
+    xpath: /config/shared/profiles/virus
+    file: profiles_virus.xml
+  - name: profiles_spyware
+    xpath: /config/shared/profiles/spyware
+    file: profiles_spyware.xml
+  - name: profiles_vulnerability
+    xpath: /config/shared/profiles/vulnerability
+    file: profiles_vulnerability.xml
+  - name: profiles_file_blocking
+    xpath: /config/shared/profiles/file-blocking
+    file: profiles_file_blocking.xml
+  - name: profiles_url_filtering
+    xpath: /config/shared/profiles/url-filtering
+    file: profiles_url_filtering.xml
+  - name: profiles_wildfire_analysis
+    xpath: /config/shared/profiles/wildfire-analysis
+    file: profiles_wildfire_analysis.xml
+  - name: pre_rulebase_security
+    xpath: /config/devices/entry[@name='localhost.localdomain']/device-group/entry[@name='{{ DEVICEGROUP }}']/pre-rulebase
+    file: pre_rulebase_security.xml

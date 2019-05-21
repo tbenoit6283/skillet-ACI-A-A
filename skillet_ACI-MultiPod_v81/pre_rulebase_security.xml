@@ -1,0 +1,65 @@
+<security>
+    <rules>
+        <entry name="Allow-All-{{ ZONE }}">
+            <target>
+                <negate>no</negate>
+            </target>
+            <to>
+                <member>{{ ZONE }}</member>
+            </to>
+            <from>
+                <member>{{ ZONE }}</member>
+            </from>
+            <source>
+                <member>any</member>
+            </source>
+            <destination>
+                <member>any</member>
+            </destination>
+            <source-user>
+                <member>any</member>
+            </source-user>
+            <category>
+                <member>any</member>
+            </category>
+            <application>
+                <member>any</member>
+            </application>
+            <service>
+                <member>any</member>
+            </service>
+            <hip-profiles>
+                <member>any</member>
+            </hip-profiles>
+            <tag>
+                <member>{{ ZONE }}</member>
+            </tag>
+            <action>allow</action>
+            <rule-type>intrazone</rule-type>
+            <log-setting>Panorama</log-setting>
+            <profile-setting>
+                <profiles>
+                  <url-filtering>
+                    <member>PBR-ACI-Alert</member>
+                  </url-filtering>
+                  <file-blocking>
+                    <member>PBR-ACI-Alert</member>
+                  </file-blocking>
+                  <virus>
+                    <member>PBR-ACI-Alert</member>
+                  </virus>
+                  <spyware>
+                    <member>PBR-ACI-Alert</member>
+                  </spyware>
+                  <vulnerability>
+                    <member>PBR-ACI-Alert</member>
+                  </vulnerability>
+                  <wildfire-analysis>
+                    <member>PBR-ACI-Alert</member>
+                  </wildfire-analysis>
+                </profiles>
+              </profile-setting>
+        </entry>
+    </rules>
+</security>
+    

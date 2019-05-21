@@ -1,0 +1,20 @@
+<entry name="{{ STACK_DEVICE_A }}">
+        <description>Template Stack Device A for ACI</description>
+        <settings/>
+        <templates>
+          <member>Template-Device-A</member>
+        </templates>
+        <devices>
+          <entry name="{{ SN_DEVICE_A }}"/>
+        </devices>
+</entry>
+<entry name="{{ STACK_DEVICE_B }}">
+        <description>Template Stack Device B for ACI</description>
+        <settings/>
+        <templates>
+          <member>Template-Device-B</member>
+        </templates>
+        <devices>
+          <entry name="{{ SN_DEVICE_B }}"/>
+        </devices>
+</entry>

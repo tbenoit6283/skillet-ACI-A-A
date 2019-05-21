@@ -1,0 +1,6 @@
+<entry name="PaloAltoNetworks">
+    <device-group>{{ DEVICEGROUP }}</device-group>
+    <template>{{ STACK }}</template>
+    <description>Service Definition Palo Alto Networks for NSX</description>
+    <ovf-url>{{ URLOVA }}</ovf-url>
+</entry>

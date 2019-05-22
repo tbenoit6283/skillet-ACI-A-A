@@ -42,6 +42,7 @@
 - APIC_IP (IP address of APIC controller)
 - APIC_LOGIN (Login of APIC controller)
 - APIC_PASSWORD (Password of APIC controller)
+- HYPERVISOR_MAC (Hypervisor Assigned MAC option for VM Series)
 - TAGCOLOR (Color of the TAG for your Zone)
 
 

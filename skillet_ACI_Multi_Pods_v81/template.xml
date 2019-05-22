@@ -28,7 +28,7 @@
             </vsys>
             <deviceconfig>
               <setting>
-                <auto-mac-detect>yes</auto-mac-detect>
+                <auto-mac-detect>{{ HYPERVISOR_MAC }}</auto-mac-detect>
               </setting>
               <system>
                 <hostname>Device-A</hostname>
@@ -188,7 +188,7 @@
             </vsys>
             <deviceconfig>
               <setting>
-                <auto-mac-detect>yes</auto-mac-detect>
+                <auto-mac-detect>{{ HYPERVISOR_MAC }}</auto-mac-detect>
               </setting>
               <system>
                 <hostname>Device-B</hostname>

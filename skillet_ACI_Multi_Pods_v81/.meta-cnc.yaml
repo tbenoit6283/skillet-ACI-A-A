@@ -96,6 +96,15 @@ variables:
     description: Password of APIC controller
     default: D3m0!
     type_hint: text
+  - name: HYPERVISOR_MAC
+    description: Hypervisor assigned MAC option for VM Series
+    default: 'yes'
+    type_hint: dropdown
+    dd_list:
+      - key: 'yes'
+        value: 'yes'
+      - key: 'no'
+        value: 'no'
   - name: COLORTAG
     description: Color of the TAG for rules of your Zone
     default: orange

@@ -9,7 +9,7 @@
         - eth2 (vNic3) connected to a dedicated port group of your DVS and it will be used for HA3
         - eth3 (vNic4) connected to a dedicated port group of your DVS and it will be used for PBR connection to the fabric.
 
-- A PBR policy MUST be configured in parallel in the Fabric for your pod with filters on a Service Graph and that Service Graph must be applied to a contract to start redirecting some traffic to our cluster of VM Series. 
+- A PBR policy MUST be configured in parallel in the Fabric for your pod with filters on a Service Graph and that Service Graph must be applied to a contract to start redirecting some traffic to our VM Series locqted on each Pods. 
 
 - You must have a Multi Pods (2 pods) with "Enable Pod Aware redirection" option checked and a functional IP SLA option (icmp) for the heath check in your L4-L7 Policy-Based Redirect configuration for the setup to work as expected
 

@@ -48,14 +48,14 @@
 
 ## Caution  
 - That skillet will not configure ACI Fabric to redirect traffic. That step must be done in parallel.
-- Promiscious mode is not mandatory vNIC4 port group to have a functionnal cluster A/A
+- Promiscious mode is not mandatory on vNIC4 port group to have a functionnal cluster A/A if you select hypervisor assigned MAC option
 - That skillet shoud work with physical devices instead of VM series but it has not been tested.
 - Panorama must be able to reach APIC controller without any proxy to retrieve metadata. DAGs must be created manually after you apply the skillet.
 
 ## Support Policy
 
 Have been tested with a single instance of panorama 8.1.X but should work as well with 9.0.X release.
-Works with ACI 3.2 and higher releases.
+Works with APIC 3.2 and higher releases.
 
 The code and templates in the repo are released under an as-is, best effort,
 support policy. These scripts should be seen as community supported and
